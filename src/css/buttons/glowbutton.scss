@@ -1,0 +1,28 @@
+@import "/src/css/_colorpalette.scss";
+
+
+.btn-glow {
+    margin: 0;
+    padding: 10px 35px;
+
+    color: $base-white;
+    background: $transparent-white-20;
+
+    cursor: pointer;
+
+    font-size: 20px;
+}
+
+.btn-glow:hover {
+    background: $transparent-white-30;
+    filter: brightness(1.2);
+}
+.btn-glow:active {
+    background: $transparent-white-10;
+}
+.btn-glow:disabled {
+    cursor: default;
+}
+// .btn-101:checked {
+//     background: $transparent-white-20;
+// }

@@ -4,6 +4,30 @@ $base-mediumpurple: #832161;
 $base-hotpink: #DA4167;
 $base-white: #F0EFF4;
 
+$transparent-white-10: hsla(0, 0%, 100%, 0.1);
+$transparent-white-20: hsla(0, 0%, 100%, 0.2);
+$transparent-white-30: hsla(0, 0%, 100%, 0.3);
+
+
+.clr-black {
+    color: $base-black;
+}
+
+.clr-darkpurple {
+    color: $base-darkpurple;
+}
+
+.clr-mediumpurple {
+    color: $base-mediumpurple;
+}
+
+.clr-hotpink {
+    color: $base-hotpink;
+}
+
+.clr-white {
+    color: $base-white;
+}
 
 .bg-black {
     background-color: $base-black;

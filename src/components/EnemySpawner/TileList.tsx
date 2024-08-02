@@ -1,23 +1,56 @@
-import { getSortedTilesBySize, Tile, TILES } from "../../entities/tiles"
+import { getSortedTilesBySize } from "../../entities/tile"
 import "../../css/panel_list_vertical.scss"
 import "./enemy_spawner.scss"
 import "../../css/buttons/glowbutton.scss"
+import { CurrentlySelecting } from "./EnemySpawner"
+import { Mission, MISSIONS } from "../../entities/mission"
 
-const tiles = getSortedTilesBySize(TILES)
+const missions = MISSIONS
 
 type TileListProps = {
-    onClick: (tile: Tile) => void
+  currentlySelecting: CurrentlySelecting
+  selectedMission: Mission | undefined
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  onClick: any
+  onClickBack: () => void
 }
 
-function TileList({onClick}: TileListProps) {
+function TileList({currentlySelecting, selectedMission, onClick, onClickBack}: TileListProps) {
+
+  const tiles = selectedMission? getSortedTilesBySize([...selectedMission.tiles.keys()]) : []
+  let title = "MISSIONS";
+  let items = missions.map((mission) => {
+    return <div className="btn-glow" onClick={() => onClick(mission)}>
+         {mission.name}
+     </div> 
+   });
+
+  switch (currentlySelecting) {
+    case "mission": 
+      break;
+    case "tile":
+      title = "TILES"
+      items = tiles.map((tile) => {
+        return <div className="btn-glow" onClick={() => onClick(tile)}>
+             {tile.getFullName()}
+         </div> 
+       })
+  }
 
   return (
     <div className="panel-list-vertical">
-        {tiles.map((tile) => {
-           return <div className="btn-glow" onClick={() => onClick(tile)}>
-                {tile.getFullName()}
-            </div> 
-        })}
+        <div className="title-container">
+          <div className="btn-glow" onClick={() => onClickBack()}>
+            {"<"}
+          </div>
+          <div className="title">
+            {title}
+          </div>
+          
+        </div>
+        <div className="item-container">
+          {items}
+        </div>
     </div>
   )
 }

@@ -5,10 +5,14 @@
     margin: 0;
     padding: 10px 35px;
 
+    display: flex;
+    justify-content: center;
+
     color: $base-white;
     background: $transparent-white-20;
 
     cursor: pointer;
+    user-select: none;
 
     font-size: 20px;
 }

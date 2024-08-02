@@ -9,4 +9,31 @@
     flex-flow: column wrap;
     gap: 2px;
 
+    .title-container {
+
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-between;
+        
+
+        background: $base-mediumpurple;
+
+        .title {
+            display: flex;
+            align-items: center;
+            flex-grow: 1;
+            justify-content: center;
+
+            color: $base-white;
+
+            font-size: 20px;
+            font-weight: bolder;
+        }
+    }
+    .items-container {
+        display: flex;
+        flex-flow: column wrap;
+        gap: 2px;
+    }
+
 }

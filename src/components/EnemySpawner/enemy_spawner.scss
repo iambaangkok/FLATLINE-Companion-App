@@ -2,21 +2,26 @@
 
 .enemy-spawner {
     width: 100vw;
+    max-width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
 
     display: flex;
-    flex-flow: column wrap;
+    flex-flow: column;
     .top {
         padding: 10px;
 
         display: flex;
-        flex-grow: 1;
 
         font-size: large;
         font-weight: bold;
     }
     .bottom {
+        padding-bottom: 10px;
         display: flex;
-        flex-flow: row wrap;
+        flex-flow: row;
+        flex-grow: 1;
+        max-height: 100vh;
 
         .left {
             display: flex;
@@ -26,6 +31,7 @@
             padding: 0px 15px;
 
             display: flex;
+            flex-flow: column;
             flex-grow: 1;
         }
     }

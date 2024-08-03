@@ -1,5 +1,6 @@
 import { getSortedTilesBySize } from "../../entities/tile"
 import "../../css/panel_list_vertical.scss"
+import "../../css/paddings.scss"
 import "./enemy_spawner.scss"
 import "../../css/buttons/glowbutton.scss"
 import { CurrentlySelecting } from "./EnemySpawner"
@@ -20,7 +21,7 @@ function TileList({currentlySelecting, selectedMission, onClick, onClickBack}: T
   const tiles = selectedMission? getSortedTilesBySize([...selectedMission.tiles.keys()]) : []
   let title = "MISSIONS";
   let items = missions.map((mission) => {
-    return <div className="btn-glow" onClick={() => onClick(mission)}>
+    return <div className="btn-glow pd-10-35" onClick={() => onClick(mission)}>
          {mission.name}
      </div> 
    });
@@ -31,7 +32,7 @@ function TileList({currentlySelecting, selectedMission, onClick, onClickBack}: T
     case "tile":
       title = "TILES"
       items = tiles.map((tile) => {
-        return <div className="btn-glow" onClick={() => onClick(tile)}>
+        return <div className="btn-glow pd-10-35" onClick={() => onClick(tile)}>
              {tile.getFullName()}
          </div> 
        })
@@ -40,13 +41,12 @@ function TileList({currentlySelecting, selectedMission, onClick, onClickBack}: T
   return (
     <div className="panel-list-vertical">
         <div className="title-container">
-          <div className="btn-glow" onClick={() => onClickBack()}>
+          <div className="btn-glow pd-10-35" onClick={() => onClickBack()}>
             {"<"}
           </div>
           <div className="title">
             {title}
           </div>
-          
         </div>
         <div className="item-container">
           {items}

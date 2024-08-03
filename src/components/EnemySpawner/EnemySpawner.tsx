@@ -4,6 +4,9 @@ import "./enemy_spawner.scss"
 import TileList from "./TileList"
 import { Tile } from "../../entities/tile";
 import { Mission } from "../../entities/mission";
+import AmountSelector from "./AmountSelector";
+import TileImageDisplay from "./TileImageDisplay";
+
 
 export type CurrentlySelecting = "mission" | "tile"
 
@@ -11,6 +14,7 @@ function EnemySpawner() {
   const [currentlySelecting, setCurrentlySelecting] = useState<CurrentlySelecting>("mission");
   const [selectedMission, setSelectedMission] = useState<Mission>();
   const [selectedTile, setSelectedTile] = useState<Tile>();
+  const [selectedAmount, setSelectedAmount] = useState<number>(0);
   
   const handlePanelListBackClick = () => {
     setSelectedMission(undefined)
@@ -24,7 +28,12 @@ function EnemySpawner() {
 
   const handleChildTileClick = (item: Tile): void => {
     setSelectedTile(item);
+    setSelectedAmount(0);
   };
+
+  const spawn = (amount: number): void => {
+    setSelectedAmount(amount);
+  }
 
   const switchPanelList = () => {
     switch (currentlySelecting) {
@@ -48,7 +57,9 @@ function EnemySpawner() {
           <div className="right bg-black">
             Selected Mission: {selectedMission?.name}<br/>
             Selected Tile: {selectedTile?.getFullName()}
-            
+            <AmountSelector onClick={spawn}></AmountSelector>
+            Spawn Amount: {selectedAmount}
+            <TileImageDisplay tile={selectedTile} amount={selectedAmount} ></TileImageDisplay>
           </div>
         </div>
 

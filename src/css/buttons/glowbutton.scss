@@ -15,6 +15,7 @@
     user-select: none;
 
     font-size: 20px;
+
 }
 
 .btn-glow:hover {
@@ -27,6 +28,7 @@
 .btn-glow:disabled {
     cursor: default;
 }
-// .btn-101:checked {
-//     background: $transparent-white-20;
-// }
+
+.glow {
+    box-shadow: 0 0 5px 2px $base-hotpink;
+}

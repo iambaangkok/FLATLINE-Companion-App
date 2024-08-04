@@ -15,7 +15,7 @@ function EnemySpawner() {
   const [selectedMission, setSelectedMission] = useState<Mission>();
   const [selectedTile, setSelectedTile] = useState<Tile>();
   const [selectedAmount, setSelectedAmount] = useState<number>(0);
-  
+  const [clickTime, setClickTime] = useState<number>(Date.now());
   const handlePanelListBackClick = () => {
     setSelectedMission(undefined)
     setCurrentlySelecting("mission")
@@ -33,14 +33,15 @@ function EnemySpawner() {
 
   const spawn = (amount: number): void => {
     setSelectedAmount(amount);
+    setClickTime(Date.now());
   }
 
   const switchPanelList = () => {
     switch (currentlySelecting) {
       case "mission":
-        return <TileList currentlySelecting="mission" selectedMission={selectedMission} onClick={handleChildMissionClick} onClickBack={() => {}}></TileList>
+        return <TileList currentlySelecting="mission" selectedMission={selectedMission} selectedTile={selectedTile} onClick={handleChildMissionClick} onClickBack={() => {}}></TileList>
       case "tile":
-        return <TileList currentlySelecting="tile" selectedMission={selectedMission} onClick={handleChildTileClick} onClickBack={handlePanelListBackClick}></TileList>
+        return <TileList currentlySelecting="tile" selectedMission={selectedMission} selectedTile={selectedTile} onClick={handleChildTileClick} onClickBack={handlePanelListBackClick}></TileList>
     }
   }
 
@@ -56,10 +57,10 @@ function EnemySpawner() {
           </div>
           <div className="right bg-black">
             Selected Mission: {selectedMission?.name}<br/>
-            Selected Tile: {selectedTile?.getFullName()}
-            <AmountSelector onClick={spawn}></AmountSelector>
-            Spawn Amount: {selectedAmount}
-            <TileImageDisplay tile={selectedTile} amount={selectedAmount} ></TileImageDisplay>
+            {/* Selected Tile: {selectedTile?.getFullName()} */}
+            <AmountSelector onClick={spawn} currentAmount={selectedAmount}></AmountSelector>
+            {/* Spawn Amount: {selectedAmount} */}
+            <TileImageDisplay tile={selectedTile} amount={selectedAmount} clickTime={clickTime} ></TileImageDisplay>
           </div>
         </div>
 

@@ -1,6 +1,8 @@
 @import "/src/css/_colorpalette.scss";
 
 .tile-image-display-container {
+    margin-top: 10px;
+
     // display: block;
     display: flex;
     flex-flow: row;
@@ -10,7 +12,7 @@
     // min-width: 0;
     // overflow: hidden;
 
-    div {
+    .tile-image-container2 {
         display: flex;
         flex-flow: row;
         align-items: center;
@@ -29,4 +31,19 @@
         }
     }
     
+    .spawn-point {
+        position: absolute;
+
+        width: 25px;
+        height: 25px;
+
+        border-radius: 50%;
+
+        // cursor: grab;
+        user-select: none;
+
+        text-align: center;
+        font-weight: bold;
+    }
+
 }

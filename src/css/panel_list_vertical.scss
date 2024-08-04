@@ -7,12 +7,11 @@
     display: flex;
     flex-flow: column wrap;
     gap: 2px;
-
+    z-index:2;
     .title-container {
         display: flex;
         flex-flow: row wrap;
         justify-content: space-between;
-        
 
         background: $base-mediumpurple;
 

@@ -18,6 +18,7 @@ export interface TileI {
     image: string,
 
     getFullName: () => string;
+    equals: (other: TileI) => boolean;
 }
 
 export class Tile implements TileI {
@@ -35,6 +36,12 @@ export class Tile implements TileI {
 
     getFullName = (): string => {
         return `${this.width}x${this.height} ${this.name}`
+    }
+
+    equals = (other: TileI):boolean => {
+        return (this.name == other.name
+            && this.width == other.width
+            && this.height == other.height)
     }
 }
 
